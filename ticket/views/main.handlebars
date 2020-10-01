@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GitHub API Example</title>
+    <meta name="description" content="Github API app with Nodejs Server.">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<header>
+    <h1>Github API Data</h1>
+    <p>This page uses Handlebars as the template engine.</p>
+</header>
+
+<main>
+
+    {{#if session}}
+        <p>
+            You are now logged in.
+        </p>
+        <p>
+            <a href="/logoff">Sign out</a>
+        </p>
+    {{else}}
+        <a class="container" href="/auth/github">Log-in with GitHub</a>
+    {{/if}}
+
+
+    {{#if repos}}
+        <h2>{{session.user.name}}'s Repositories</h2>
+        <ul class="collapsible">
+            {{#each repos}}
+                <li>{{full_name}} -- owned by {{owner.login}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</main>
+
+</body>
+
+</html>
